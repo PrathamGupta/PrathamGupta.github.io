@@ -43,3 +43,4 @@ Go to `http://localhost:5000/chat` to start chatting! Open another window and ch
 ## Known bugs
 
 * Sometimes sends message out twice
+* Baaki this is just cool AF
