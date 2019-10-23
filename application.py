@@ -4,7 +4,7 @@ from flask.ext.socketio import SocketIO, emit
 
 application = Flask(__name__)
 application.debug = True
-application.config['SECRET_KEY'] = 'secret!'
+application.config['SECRET_KEY'] = os.urandom(16)
 socketio = SocketIO(application)
 
 clients = []
@@ -46,9 +46,9 @@ def connect():
     emit('connect', {'data': 'Connected', 'users': clients})
 
 
-@socketio.on('disconnect', namespace='/echo')
+@socketio.on('disconnect', namespace='/disconnect')
 def disconnect():
-    print('Client disconnected')
+    print('Client Not Working')
 
 if __name__ == '__main__':
-    socketio.run(application, host='0.0.0.0', port=int(os.environ['PORT']))
+    socketio.run(application, host='0.0.0.0', port=5000)
