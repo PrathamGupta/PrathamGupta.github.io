@@ -339,23 +339,124 @@
         }
     }
 
+    // Smooth scrolling for anchor links
+    function smoothScroll(target) {
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('myNavbar');
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+        }
+    });
+
+    // Enhanced typing animation with multiple lines
     document.addEventListener("DOMContentLoaded", function() {
-        const text = "$> Pratham Gupta";
-        let index = 0;
-        const speed = 100; // Adjust typing speed here
+        const texts = [
+            "$> Pratham Gupta",
+            "$> Cybersecurity Specialist",
+            "$> Software Developer"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 100;
+        const deleteSpeed = 50;
+        const pauseTime = 2000;
         const typingText = document.getElementById("typing-text");
 
         function typeWriter() {
-            if (index < text.length) {
-                typingText.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.innerHTML = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.innerHTML = currentText.substring(0, charIndex + 1);
+                charIndex++;
             }
+
+            let currentSpeed = isDeleting ? deleteSpeed : speed;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                currentSpeed = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                currentSpeed = 500;
+            }
+
+            setTimeout(typeWriter, currentSpeed);
         }
 
-        typeWriter();
+        // Start typing animation
+        setTimeout(typeWriter, 1000);
 
+        // Add click effects to cards
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.card')) {
+                const card = e.target.closest('.card');
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 150);
+            }
+        });
+
+        // Add parallax effect to main image
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const mainImage = document.querySelector('.main-image img');
+            if (mainImage) {
+                const rate = scrolled * -0.5;
+                mainImage.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all columns for animation
+        setTimeout(() => {
+            const columns = document.querySelectorAll('.column');
+            columns.forEach(column => {
+                observer.observe(column);
+            });
+        }, 3000);
     });
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const navbar = document.getElementById('myNavbar');
+            if (navbar.classList.contains('responsive')) {
+                navbar.classList.remove('responsive');
+            }
+        }
+    });
+
 </script>
 
 </body>
