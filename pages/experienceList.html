@@ -28,12 +28,25 @@
         }
 
         .navbar a {
-            float: left;
             display: block;
             color: #39DA39;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            float: right;
+        }
+
+        .navbar .nav-links a {
+            float: left;
+        }
+
+        .navbar .brand {
+            float: left;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .navbar a:hover {
@@ -110,7 +123,7 @@
         }
 
         @media screen and (max-width: 600px) {
-            .navbar a {
+            .navbar .nav-links a {
                 display: none;
             }
 
@@ -139,7 +152,7 @@
                 top: 0;
             }
 
-            .navbar.responsive a {
+            .navbar.responsive .nav-links a {
                 float: none;
                 display: block;
                 text-align: left;
@@ -158,13 +171,15 @@
 <body>
 
 <div class="navbar" id="myNavbar">
-    <a href="https://prathamgupta.github.io">Home</a>
-    <a href="https://prathamgupta.github.io/files/Resume.pdf" target="_blank">Resume</a>
-    <a href="https://prathamgupta.github.io/pages/about">About</a>
-    <a href="https://prathamgupta.github.io/pages/contact">Contact</a>
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-        &#9776;
-    </a>
+    <a href="https://prathamgupta.github.io" class="brand">Pratham Gupta</a>
+    <div class="nav-links">
+        <a href="https://prathamgupta.github.io/files/Resume.pdf" target="_blank">Resume</a>
+        <a href="https://prathamgupta.github.io/pages/about">About</a>
+        <a href="https://prathamgupta.github.io/pages/contact">Contact</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            &#9776;
+        </a>
+    </div>
 </div>
 
 <div class="main-content">
