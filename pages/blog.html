@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pratham Gupta</title>
+    <title>Pratham Gupta - Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
 
@@ -93,7 +93,6 @@
             padding-top: 80px;
             width: 90%;
             max-width: 1200px;
-            text-align: center;
             margin-top: 20px;
             animation: fadeInUp 1s ease-out;
         }
@@ -110,6 +109,7 @@
         }
 
         .main-image {
+            text-align: center;
             margin: 40px 0;
             animation: float 3s ease-in-out infinite;
         }
@@ -123,45 +123,43 @@
             transform: scale(1.05);
         }
 
-        .content {
-            display: flex;
-            justify-content: space-between;
+        .blog-intro {
+            text-align: center;
             margin: 30px 0;
-            gap: 30px;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(31, 31, 31, 0.8), rgba(20, 20, 20, 0.9));
+            border: 1px solid rgba(57, 218, 57, 0.2);
+            border-radius: 15px;
+            color: #ffffff;
         }
 
-        .column {
-            width: 48%;
-            color: #fff;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .column h2 {
+        .blog-intro h2 {
             color: #39DA39;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.5rem;
             text-shadow: 0 0 10px rgba(57, 218, 57, 0.3);
         }
 
-        .column h3 {
-            color: #39DA39;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
 
-        .card {
+        .blog-post {
             background: linear-gradient(145deg, rgba(31, 31, 31, 0.8), rgba(20, 20, 20, 0.9));
             border: 1px solid rgba(57, 218, 57, 0.2);
             padding: 25px;
-            margin: 15px 0;
             border-radius: 15px;
-            color: #fff;
+            color: #ffffff;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
-        .card::before {
+        .blog-post::before {
             content: '';
             position: absolute;
             top: 0;
@@ -172,25 +170,79 @@
             transition: left 0.5s ease;
         }
 
-        .card:hover::before {
+        .blog-post:hover::before {
             left: 100%;
         }
 
-        .card:hover {
+        .blog-post:hover {
             transform: translateY(-5px);
             border-color: rgba(57, 218, 57, 0.5);
             box-shadow: 0 10px 30px rgba(57, 218, 57, 0.2);
         }
 
-        .card a {
+        .blog-post h3 {
             color: #39DA39;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(57, 218, 57, 0.3);
         }
 
-        .card a:hover {
+        .blog-post .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-post .excerpt {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .blog-post .read-more {
+            color: #39DA39;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .blog-post .read-more:hover {
             color: #ffffff;
             text-shadow: 0 0 10px rgba(57, 218, 57, 0.5);
+        }
+
+        .blog-post .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .coming-soon {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(31, 31, 31, 0.8), rgba(20, 20, 20, 0.9));
+            border: 1px solid rgba(57, 218, 57, 0.2);
+            border-radius: 15px;
+            color: #ffffff;
+        }
+
+        .coming-soon h2 {
+            color: #39DA39;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-shadow: 0 0 20px rgba(57, 218, 57, 0.5);
+        }
+
+        .coming-soon p {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .typing-effect::after {
@@ -230,13 +282,9 @@
                 font-size: 2rem;
             }
 
-            .content {
-                flex-direction: column;
+            .blog-posts {
+                grid-template-columns: 1fr;
                 gap: 20px;
-            }
-
-            .column {
-                width: 100%;
             }
 
             .navbar a {
@@ -305,80 +353,94 @@
     <div class="main-text">
         <h1><span id="typing-text" class="typing-effect"></span></h1>
     </div>
-    <h2>$cat About Me</h2>
-    <div class="card">
-        <p>Cybersecurity professional with a Master’s from NYU and hands-on experience in security engineering, penetration testing, and enterprise security controls. Proven ability to develop and implement security tools, automate workflows, and support compliance with ISO 27001 and NIST. Skilled inCloud Security and DevSecOps, with a strong track record of reducing risk and improving system resilience. Effective communicator and collaborator, consistently delivering results in diverse team environments. Actively pursuing opportunities to leverage advanced technical and security expertise in dynamic organizations.</p>
+    <div class="main-image">
+        <img src="../images/only_white_lines_transparent.png" alt="Placeholder Image" width="300">
     </div>
-    <h2>$cat Education</h2>
-    <div class="content">
-        <div class="column" id="nyu">
-            <h3>New York University</h3>
-            <img src="../images/nyu1.png" alt="NYU Image" height="30">
-            <p>MS CyberSecurity</p>
+    
+    <div class="blog-intro">
+        <h2>$cat Blog</h2>
+        <p>Welcome to my blog! Here I share insights about cybersecurity, software development, and technology trends. Stay tuned for regular updates on security best practices, coding tutorials, and industry analysis.</p>
+    </div>
+
+    <div class="blog-posts">
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>Understanding Zero-Trust Architecture</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                A deep dive into zero-trust security models and how they're revolutionizing enterprise security. Learn about the principles, implementation strategies, and real-world applications.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
-        <div class="column" id="iiitd">
-            <h3>IIIT Delhi</h3>
-            <img src="../images/iiitd1.png" alt="IIITD Image" height="30">
-            <p>B.Tech Computer Science</p>
+
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>DevSecOps: Integrating Security into CI/CD</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                Explore how to seamlessly integrate security practices into your development pipeline. From automated security testing to compliance monitoring.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>Penetration Testing: A Beginner's Guide</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                Learn the fundamentals of ethical hacking and penetration testing. Tools, methodologies, and legal considerations for aspiring security professionals.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>Cloud Security Best Practices</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                Essential security considerations for cloud environments. Covering AWS, Azure, and GCP security configurations and monitoring strategies.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>Building Secure APIs</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                A comprehensive guide to API security. Authentication, authorization, input validation, and common vulnerabilities to avoid.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="blog-post" onclick="showComingSoon()">
+            <h3>Incident Response Planning</h3>
+            <div class="date">Coming Soon</div>
+            <div class="excerpt">
+                How to prepare for and respond to security incidents. Creating effective incident response plans and building resilient security teams.
+            </div>
+            <a href="#" class="read-more" onclick="event.stopPropagation(); showComingSoon();">
+                Read More <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </div>
-    <h2>$cat Extra Curriculars</h2>
-    <div class="content">
-        <div class="column card" id="extra1">
-            <h3>President</h3>
-            <p>Tasveer</p>
-            <p>Photography Club of IIITD</p>
-        </div>
-        <div class="column card" id="extra2">
-            <h3>Secretary</h3>
-            <p>GISA</p><p>Graduate Indian Student Association, NYU</p>
-        </div>
-    <!-- </div>
-    <div class="content"> -->
-        <div class="column card" id="extra3">
-            <h3>Seargent-At-Arms</h3>
-            <p>Rotary Club</p>
-            <p>Delhi, India</p>
-        </div>
-        <div class="column card" id="extra4">
-            <h3>Experiences Executive</h3>
-            <p>TedXIIITD</p>
-        </div>
-    </div>
-    <h2>$cat Awards</h2>
-    <div class="content">
-        <div class="column card" id="extra1">
-            <h3>Dean's List Award</h3>
-            <p>Dean of IIITD</p>
-        </div>
-        <div class="column card" id="extra2">
-            <h3>First Position</h3>
-            <p>HackIIITD, Hackathon at IIITD</p>
-            <p>Built Professor Presenter</p>
-        </div>
-    <!-- </div>
-    <div class="content"> -->
-        <div class="column card" id="extra3">
-            <h3>CTF Top 15</h3>
-            <p>out of 400</p>
-            <p>VIVD CTF, NCAE-C</p>
-        </div>
-        <div class="column card" id="extra4">
-            <h3>Top 1% in India Exam</h3>
-            <p>out of 800,000</p>
-            <p>Central Higher Education Exam, India</p>
-        </div>
-    </div>
-    <h2>$cat Certifications</h2>
-    <div class="content">
-        <div class="column card" id="extra1">
-            <h3><a href="https://coursera.org/share/270b49a0701680981707d290b21adb9f">CyberSecurity and Internet of Things</a></h3>
-            <p>University of Georgia</p>
-        </div>
-        <div class="column card" id="extra2">
-            <h3><a href="https://coursera.org/share/1eb729cdd9c1ea6cb318a11c8128ae4f">Machine Learning</a></h3>
-            <p>Stanford University Online</p>
-        </div>
+
+    <div class="coming-soon">
+        <h2>$echo "Blog Under Construction"</h2>
+        <p>I'm currently working on creating valuable content for the cybersecurity and software development community. New posts will be published regularly, covering topics like:</p>
+        <br>
+        <p>• Security architecture and design patterns</p>
+        <p>• Hands-on tutorials and walkthroughs</p>
+        <p>• Industry insights and career advice</p>
+        <p>• Tool reviews and comparisons</p>
+        <p>• Case studies and real-world experiences</p>
+        <br>
+        <p>Stay connected by following me on <a href="https://www.linkedin.com/in/prathamguptaaa" target="_blank" style="color: #39DA39; text-decoration: none;">LinkedIn</a> or <a href="https://twitter.com/prathammguptaa" target="_blank" style="color: #39DA39; text-decoration: none;">Twitter</a> for updates!</p>
     </div>
 </div>
 
@@ -392,15 +454,8 @@
         }
     }
 
-    // Smooth scrolling for anchor links
-    function smoothScroll(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+    function showComingSoon() {
+        alert("🚧 Blog post coming soon! Stay tuned for valuable cybersecurity and development content.");
     }
 
     // Add scroll effect to navbar
@@ -417,8 +472,8 @@
     document.addEventListener("DOMContentLoaded", function() {
         const texts = [
             "$> Pratham Gupta",
-            "$> Cybersecurity Specialist",
-            "$> Software Developer"
+            "$> Cybersecurity Blog",
+            "$> Tech Insights"
         ];
         let textIndex = 0;
         let charIndex = 0;
@@ -456,13 +511,13 @@
         // Start typing animation
         setTimeout(typeWriter, 1000);
 
-        // Add click effects to cards
+        // Add click effects to blog posts
         document.addEventListener('click', function(e) {
-            if (e.target.closest('.card')) {
-                const card = e.target.closest('.card');
-                card.style.transform = 'scale(0.98)';
+            if (e.target.closest('.blog-post')) {
+                const post = e.target.closest('.blog-post');
+                post.style.transform = 'scale(0.98)';
                 setTimeout(() => {
-                    card.style.transform = '';
+                    post.style.transform = '';
                 }, 150);
             }
         });
@@ -491,13 +546,19 @@
             });
         }, observerOptions);
 
-        // Observe all columns for animation
+        // Observe all blog posts for animation
         setTimeout(() => {
-            const columns = document.querySelectorAll('.column');
-            columns.forEach(column => {
-                observer.observe(column);
+            const posts = document.querySelectorAll('.blog-post');
+            posts.forEach((post, index) => {
+                post.style.opacity = '0';
+                post.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    post.style.transition = 'all 0.6s ease';
+                    post.style.opacity = '1';
+                    post.style.transform = 'translateY(0)';
+                }, index * 100);
             });
-        }, 3000);
+        }, 2000);
     });
 
     // Add keyboard navigation
