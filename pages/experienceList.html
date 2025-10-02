@@ -330,9 +330,9 @@
     // Enhanced typing animation with multiple lines
     document.addEventListener("DOMContentLoaded", function() {
         const texts = [
-            "$> Pratham Gupta",
-            "$> Cybersecurity Specialist",
-            "$> Software Developer"
+            "Pratham Gupta",
+            "Cybersecurity Specialist",
+            "Software Developer"
         ];
         let textIndex = 0;
         let charIndex = 0;
@@ -344,12 +344,13 @@
 
         function typeWriter() {
             const currentText = texts[textIndex];
+            const prefix = "$> ";
             
             if (isDeleting) {
-                typingText.innerHTML = currentText.substring(0, charIndex - 1);
+                typingText.innerHTML = prefix + currentText.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                typingText.innerHTML = currentText.substring(0, charIndex + 1);
+                typingText.innerHTML = prefix + currentText.substring(0, charIndex + 1);
                 charIndex++;
             }
 
